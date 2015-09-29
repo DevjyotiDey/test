@@ -1,0 +1,17 @@
+/* IE Specific Styles */
+
+/*Hacks for specific browsers
+	background: black\9; - IE 8 and below
+	*background: grey; - IE 7 and below
+	_background: blue; - IE 6
+*/
+
+/*960.css overrides*/
+
+
+/*Global Toolbar*/
+#footer {
+	background:url("../img/vzomega/footer_bg.png") bottom repeat-x #0C0C0C;
+}
+
+

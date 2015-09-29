@@ -1,0 +1,14 @@
+language: java
+script: ant main
+sudo: require
+
+deploy:
+ edge: true
+ provider: cloudfoundry
+ username: devjyoti.dey@verizon.com
+ password: g20051988
+ api: https://api.run.pivotal.io
+ organization: verizon.hackathon-org
+ space: development
+# uncomment this line if your project needs to run something other than `rake`:
+# script: bundle exec rspec spec

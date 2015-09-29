@@ -1,0 +1,99 @@
+
+/* VZ TIP
+----------------------------------*/
+.ui-tooltip, .qtip { font-size:13px; font-family:Arial, Helvetica, sans-serif; position:absolute; left:-28000px; top:-28000px; display:none; max-width:420px; min-width:30px; line-height:16px; z-index:15000; margin-top:-13px ; }
+.ui-tooltip-fluid { display:block; visibility:hidden; position:static!important; float:left!important; }
+.ui-tooltip-content { position:relative; padding:5px 9px; overflow:hidden; border-width:1px; border-style:solid; text-align:left; word-wrap:break-word; overflow:hidden; }
+.ui-tooltip-titlebar { position:relative; min-height:14px; padding:5px 35px 5px 10px; overflow:hidden; border-width:1px 1px 0; border-style:solid; font-weight:bold; }
+.ui-tooltip-titlebar+.ui-tooltip-content { border-top-width:0!important; }/*!Default close button class */
+.ui-tooltip-titlebar .ui-state-default { position:absolute; right:4px; top:50%; margin-top:-9px; cursor:pointer; outline:medium none; border-width:1px; border-style:solid; }
+* html .ui-tooltip-titlebar .ui-state-default { top:16px; }
+.ui-tooltip-titlebar .ui-icon, .ui-tooltip-icon .ui-icon { display:block; text-indent:-1000em; }
+.ui-tooltip-icon .ui-icon { width:18px; height:14px; text-align:center; text-indent:0; font:normal bold 10px/13px Tahoma, sans-serif; color:inherit; background:transparent none no-repeat -100em -100em; }/*!Default tooltip style */
+.ui-tooltip-default .ui-tooltip-titlebar, .ui-tooltip-default .ui-tooltip-content {border-color:#333; background-color:#EAEAEA; color:#555; }
+.ui-tooltip-default .ui-tooltip-titlebar { background-color:#FFEF93; }
+.ui-tooltip-default .ui-tooltip-icon { background:#F1F1F1; color:#777; }
+.ui-tooltip-default .ui-tooltip-titlebar .ui-state-hover { border-color:#AAA; color:#111; text-decoration:none;}
+#qtip-overlay { position:fixed; left:-10000em; top:-10000em; }
+#qtip-overlay.blurs { cursor:pointer; }
+#qtip-overlay div { position:absolute; left:0; top:0; width:100%; height:100%; background-color:black; opacity:.7; filter:alpha(opacity=70); -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=70)"; }
+.ui-tooltip .ui-tooltip-tip { margin:0 auto; overflow:hidden; background:transparent!important; border:0 dashed transparent!important; z-index:10; }
+.ui-tooltip .ui-tooltip-tip, .ui-tooltip .ui-tooltip-tip * { position:absolute; line-height:.1px!important; font-size:.1px!important; color:#123456; background:transparent; border:0 dashed transparent; }
+.ui-tooltip .ui-tooltip-tip canvas { top:0; left:0; }
+.ui-tooltip-default .ui-tooltip-titlebar, .ui-tooltip-default .ui-tooltip-content { border-color:#CCC; color:#454545; }
+.ui-tooltip-default .ui-tooltip-content { background-color:white; }
+.ui-tooltip-default .ui-tooltip-titlebar { background-color:#f1f1f1; }
+.tip_content{display:none;}
+.ui-tooltip-content ul{list-style-type:none; margin:0px 0px 10px 0px; padding:0px; }
+.ui-tooltip-content ul li{background:url(../../images/lists/ul_bullet_black.gif) no-repeat 0px 5px; padding:0px 0px 10px 15px;}
+.tipbox{padding:0 0 16px;}
+.ui-tooltip-dark  .ui-tooltip-titlebar, .ui-tooltip-dark .ui-tooltip-content { _margin-bottom:0; .margin-bottom:0;
+background:#191919; background:rgba(25, 25, 25, 1); color:white; border-color:#FCFCFC; }
+.ui-tooltip-default .ui-tooltip-titlebar{background: none repeat scroll 0 0 #111111;   border-color: #FFFFFF #FFFFFF #000000;   border-style: solid;   border-width: 1px 1px 0;}
+.ui-tooltip a{color:#66CCFF}
+#ui-tooltip-1-content ul { list-style-type:disc; }
+#ui-tooltip-1-content ul li { padding:0px; margin-left: 10px; }
+
+
+/* DATA TABLE
+----------------------------------------------------*/
+.dataTables_paginate{text-align:right; float:right}
+.dataTables_paginate .pager{ position:relative;margin-top:15px; position:relative; float:right }
+.dataTables_paginate .pager ul li{ float:left; border:1px solid transparent; margin-top:5px;}
+.dataTables_paginate .pager li.active a{ background-color:#F2F2F2; color:#AF0000; border:solid 1px #CCC; display:inline-block;padding:1px 6px;font-size:12px; font-weight:bold; text-decoration:none; }
+.dataTables_paginate .pager ul li a{display:inline-block; padding:1px 6px;font-size:12px; text-decoration:none;}
+.dataTables_paginate .pager ul li.prev,.dataTables_paginate .pager ul li.next,.dataTables_paginate .pager ul li.prev a,.dataTables_paginate .pager ul li.next a{margin-top:0px; padding:0px; font-size:11px; margin-left:5px; margin-right:5px;}
+.dataTables_paginate .pager ul li a{display:inline-block; padding:1px 6px;text-decoration:none;}
+.dataTables_info{margin-top:15px; float:left;}
+
+
+
+/* MODAL POPUP
+----------------------------------*/
+#cboxLoadedContent label{ padding-left:0px; line-height:22px;23px}
+#colorbox, #cboxOverlay, #cboxWrapper { position:absolute; top:0; left:0; z-index:9999; overflow:hidden; }
+#cboxOverlay { position:fixed; width:100%; height:100%; z-index:888; }
+#cboxMiddleLeft, #cboxBottomLeft { clear:left; }
+#cboxContent { position:relative; }
+#cboxLoadedContent { overflow:auto; font-size:12px; font-weight:normal; }
+#cboxContent img.disclaimer_img {float: left;padding-top: 10px;}
+#cboxContent .disclaimer_text {margin-left: 156px;padding-top: 8px;}
+#cboxLoadedContent p{padding-bottom:6px; font-size:12px;}
+#cboxTitle { margin:0;height:30px;}
+#cboxLoadingOverlay, #cboxLoadingGraphic { position:absolute; top:0; left:0; width:100%; }
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow { cursor:pointer; }
+.cboxPhoto { float:left; margin:auto; border:0; display:block; }
+.cboxIframe { width:100%; height:100%; display:block; border:0; }
+#cboxOverlay { background:#000; }
+#cboxContent { background:#fff; overflow:hidden; }
+#cboxError { padding:50px; border:1px solid #ccc; }
+#cboxLoadedContent { margin-top:49px; *margin-top:49px; padding:0 15px 9px; *padding-bottom:15px; margin-bottom:2px;}
+#cboxTitle { position:absolute; top:0; left:0; text-align:left; width:100%; color:#000; font-size:24px; font-weight:bold; border-bottom:solid 1px #FFF; padding-bottom:10px; padding-top:8px; /*text-transform:uppercase;*/ }
+#cboxCurrent { position:absolute; bottom:4px; left:58px; color:#949494; }
+#cboxSlideshow { position:absolute; bottom:4px; right:30px; color:#0092ef; }
+#cboxPrevious { position:absolute; bottom:0; left:0; background:url(../../images/popup/controls.png) no-repeat -75px 0; width:25px; height:25px; text-indent:-9999px; }
+#cboxPrevious.hover { background-position:-75px -25px; }
+#cboxNext { position:absolute; bottom:0; left:27px; background:url(../../images/popup/controls.png) no-repeat -50px 0; width:25px; height:25px; text-indent:-9999px; }
+#cboxNext.hover { background-position:-50px -25px; }
+#cboxClose { position:absolute; top:0; right:0; /* width:50px; height:20px; text-indent:-9999px;*/ }
+.cboxIE, .cboxIE6 { z-index:8888; }
+.cboxIE #cboxTopLeft, .cboxIE #cboxTopCenter, .cboxIE #cboxTopRight, .cboxIE #cboxBottomLeft, .cboxIE #cboxBottomCenter, .cboxIE #cboxBottomRight, .cboxIE #cboxMiddleLeft, .cboxIE #cboxMiddleRight { filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00FFFFFF, endColorstr=#00FFFFFF);}
+#cboxContent .divider { border-bottom:1px solid #CCC; clear:both; margin:0px 0px 10px 0px; }
+/*#cboxContent .disclaimer_text .divider_np { clear:none !important;}*/
+
+#cboxWrapper { /*-webkit-border-radius: 6px; -moz-border-radius: 6px; border-radius: 6px;*/ -webkit-box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.4); -moz-box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.4); box-shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.4); }
+#cboxContent { padding:0px; background: #FFF; }
+#cboxTitle { margin:0 0px; padding:8px 15px 10px; width:98%; /*font-family:"VerizonApexBook";*/ height:auto;}
+#cboxClose { right: 15px; /*text-indent: -9999px;*/ top: 12px; display: inline-block; 
+text-decoration: none; outline: none; cursor: pointer; font: normal 12px/1em Arial, sans-serif; padding:0;color: #0066cc;background:url(../img/global/close_Ico.gif) 38px 0 no-repeat; font-weight:bold;}
+#cboxClose span{border-top:solid 1px #FFF; display: inline-block; padding: 2px 22px 6px 0px;}
+#cboxContent .titlebox { display:none; }
+
+#cboxLoadedContent p.pb10{padding-bottom:10px;}
+#cboxLoadedContent p.npb{padding-bottom:0;}
+#cboxLoadedContent {
+    width: 96% !important;
+    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
