@@ -1,8 +1,8 @@
 applications :
-- name : DevjyotiTestWebProj
+- name : VzFeederProject
 memory: 512M
 instance: 1
-path: dist/MyProject.war
+path: dist/Feeder.war
 buildpack: https://github.com/cloudfoundry/java-buildpack
 services:
    [ MySql, SendGridMail ]
