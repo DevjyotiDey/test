@@ -27,8 +27,10 @@ public class DBUtis {
     
     public static void closeConnection(Connection conn){
     	try {
-    		if(conn!=null && conn instanceof Connection)
-			conn.close();
+    		if(conn!=null && conn instanceof Connection){
+    			conn.close();
+    			System.out.println("Closed connection..");
+    		}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
