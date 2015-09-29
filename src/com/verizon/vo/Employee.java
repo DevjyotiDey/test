@@ -1,10 +1,11 @@
 package com.verizon.vo;
 
+
 public class Employee {
 	private String address;
 	private String designation;
 	private String emailId;
-	private String employeeID;
+	private int employeeID;
 	private String employeeName;
 	private String mobileNumber;
 	private String voip;
@@ -27,10 +28,10 @@ public class Employee {
 	public void setEmailId(String emailId) {
 		this.emailId = emailId;
 	}
-	public String getEmployeeID() {
+	public int getEmployeeID() {
 		return employeeID;
 	}
-	public void setEmployeeID(String employeeID) {
+	public void setEmployeeID(int employeeID) {
 		this.employeeID = employeeID;
 	}
 	public String getEmployeeName() {
@@ -58,5 +59,7 @@ public class Employee {
 		this.vzid = vzid;
 	}
 	
-	
+	public String toString(){
+		return this.vzid;
+	}
 }
