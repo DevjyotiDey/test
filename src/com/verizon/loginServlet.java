@@ -1,11 +1,14 @@
 package com.verizon;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.verizon.vo.*;
+import com.verizon.utils.CommonUtils;
+
 
 public class loginServlet extends HttpServlet
 {
@@ -20,11 +23,22 @@ public class loginServlet extends HttpServlet
 	{
 		try
 		{
-			String id = (String)request.getParameter("empid");
+			String vzId = (String)request.getParameter("empid");
 			String pwd = (String)request.getParameter("password");
+			Employee employee = CommonUtils.getEmployee(vzId);
+			System.out.println("employee =" + employee.getVzid());
 			
-			if(!"".equalsIgnoreCase(id) || !"".equalsIgnoreCase(pwd))
+			boolean authenticated=CommonUtils.authenticateUser(employee,pwd);
+			if(authenticated)
 			{
+				Interviewee interviewee=CommonUtils.getInterviewee(employee);
+				Interviewer interviewer=CommonUtils.getInterviewer(employee);
+				if(interviewee!=null){
+					request.setAttribute("com.verizon.vo.Interviewee", interviewee);
+				}
+				if(interviewer!=null){
+					request.setAttribute("com.verizon.vo.Interviewer", interviewer);
+				}
 				request.getRequestDispatcher("intview.jsp").forward(request, response);
 			}
 			else
