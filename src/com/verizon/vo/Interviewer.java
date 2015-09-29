@@ -1,27 +1,20 @@
 package com.verizon.vo;
 
+import java.util.ArrayList;
+
 public class Interviewer {
 
-	private int evaluationId;
-	private int interviewId;
 	private int interviewerEmpId;
-	
 	private Employee employee;
+	private ArrayList<InterviewDetail> interviewsTaken=new ArrayList<InterviewDetail>();
 
-	public int getEvaluationId() {
-		return evaluationId;
+
+	public ArrayList<InterviewDetail> getInterviews() {
+		return interviewsTaken;
 	}
 
-	public void setEvaluationId(int evaluationId) {
-		this.evaluationId = evaluationId;
-	}
-
-	public int getInterviewId() {
-		return interviewId;
-	}
-
-	public void setInterviewId(int interviewId) {
-		this.interviewId = interviewId;
+	public void setInterviews(ArrayList<InterviewDetail> interviews) {
+		this.interviewsTaken = interviews;
 	}
 
 	public int getInterviewerEmpId() {
@@ -38,6 +31,11 @@ public class Interviewer {
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
+	}
+
+	@Override
+	public String toString() {
+		return ""+interviewerEmpId;
 	}
 	
 	
