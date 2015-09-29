@@ -23,7 +23,7 @@ public class CommonUtils {
 					employee.setAddress(rs.getString("ADDRESS"));
 					employee.setDesignation(rs.getString("DESIGNATION"));
 					employee.setEmailId(rs.getString("EMAIL_ID"));
-					employee.setEmployeeID(rs.getString("EMPLOYEE_ID"));
+					employee.setEmployeeID(rs.getInt("EMPLOYEE_ID"));
 					employee.setEmployeeName(rs.getString("EMPLOYEE_NAME"));
 					employee.setMobileNumber(rs.getString("MOBILE_NO"));
 					employee.setVoip(rs.getString("VOIP"));
@@ -59,7 +59,7 @@ public class CommonUtils {
 					employee.setAddress(rs.getString("ADDRESS"));
 					employee.setDesignation(rs.getString("DESIGNATION"));
 					employee.setEmailId(rs.getString("EMAIL_ID"));
-					employee.setEmployeeID(rs.getString("EMPLOYEE_ID"));
+					employee.setEmployeeID(rs.getInt("EMPLOYEE_ID"));
 					employee.setEmployeeName(rs.getString("EMPLOYEE_NAME"));
 					employee.setMobileNumber(rs.getString("MOBILE_NO"));
 					employee.setVoip(rs.getString("VOIP"));
@@ -126,7 +126,7 @@ public class CommonUtils {
 		if(conn!=null){
 			try {
 				PreparedStatement ps=conn.prepareStatement(GET_INTERVIEWEE);
-				ps.setString(1,e.getEmployeeID());
+				ps.setInt(1,e.getEmployeeID());
 				ResultSet rs=ps.executeQuery();
 				while(rs!=null && rs.next()){
 					System.out.println("Got results from DB");
@@ -252,7 +252,7 @@ public class CommonUtils {
 		if(conn!=null){
 			try {
 				PreparedStatement ps=conn.prepareStatement(GET_INTERVIEWER);
-				ps.setString(1,employee.getEmployeeID());
+				ps.setInt(1,employee.getEmployeeID());
 				ResultSet rs=ps.executeQuery();
 				
 				while(rs!=null && rs.next()){
