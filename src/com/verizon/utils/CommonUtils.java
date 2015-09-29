@@ -153,7 +153,9 @@ public class CommonUtils {
 						 interviewsGiven.add(interview);
 					}
 				}
-				interviewee.setInterviewsGiven(interviewsGiven);
+				if(interviewee!=null){
+					interviewee.setInterviewsGiven(interviewsGiven);
+				}
 			} catch (Exception ex) {
 				// TODO Auto-generated catch block
 				ex.printStackTrace();
@@ -216,7 +218,9 @@ public class CommonUtils {
 						 interviewsGiven.add(interview);
 					}
 				}
-				interviewee.setInterviewsGiven(interviewsGiven);
+				if(interviewee!=null){
+					interviewee.setInterviewsGiven(interviewsGiven);
+				}
 			} catch (Exception ex) {
 				// TODO Auto-generated catch block
 				ex.printStackTrace();
@@ -276,7 +280,9 @@ public class CommonUtils {
 						 interviewsTaken.add(interview);
 					}
 				}
-				interviewer.setInterviews(interviewsTaken);
+				if(interviewer!=null){
+					interviewer.setInterviews(interviewsTaken);
+				}
 			} catch (Exception ex) {
 				// TODO Auto-generated catch block
 				ex.printStackTrace();
