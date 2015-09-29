@@ -13,7 +13,6 @@
 	<property name="project.war" value="${project.name}.war" />
 
 
-
 	<path id="classpath.lib">
 		<fileset dir="${project.lib.dir}" includes="*.jar" />
 	</path>
