@@ -163,7 +163,7 @@ public class CommonUtils {
 				DBUtis.closeConnection(conn);
 			}
 			
-			if(interviewee.getIntervieweeOrg()!=null && "VERIZON".equalsIgnoreCase(interviewee.getIntervieweeOrg()) && interviewee.getEmployeeID()!=0){
+			if(interviewee!=null && interviewee.getIntervieweeOrg()!=null && "VERIZON".equalsIgnoreCase(interviewee.getIntervieweeOrg()) && interviewee.getEmployeeID()!=0){
 				Employee emp=getEmployee(interviewee.getEmployeeID());
 				interviewee.setEmployee(emp);
 			}
@@ -228,7 +228,7 @@ public class CommonUtils {
 				DBUtis.closeConnection(conn);
 			}
 			
-			if(interviewee.getIntervieweeOrg()!=null && "VERIZON".equalsIgnoreCase(interviewee.getIntervieweeOrg()) && interviewee.getEmployeeID()!=0){
+			if(interviewee!=null && interviewee.getIntervieweeOrg()!=null && "VERIZON".equalsIgnoreCase(interviewee.getIntervieweeOrg()) && interviewee.getEmployeeID()!=0){
 				Employee emp=getEmployee(interviewee.getEmployeeID());
 				interviewee.setEmployee(emp);
 			}
@@ -290,7 +290,7 @@ public class CommonUtils {
 				DBUtis.closeConnection(conn);
 			}
 			
-			if(interviewer.getInterviewerEmpId()!=0){
+			if(interviewer!=null && interviewer.getInterviewerEmpId()!=0){
 				Employee e=getEmployee(interviewer.getInterviewerEmpId());
 				if(e!=null){
 					interviewer.setEmployee(e);
