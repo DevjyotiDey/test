@@ -17,7 +17,7 @@ public class CommonUtils {
 				PreparedStatement ps=conn.prepareStatement(EMP_QUERY);
 				ps.setString(1,vzId);
 				ResultSet rs=ps.executeQuery();
-				if(rs!=null){
+				if(rs!=null && rs.next()){
 					System.out.println("Got results from DB");
 					employee = new Employee();
 					employee.setAddress(rs.getString("ADDRESS"));
@@ -53,7 +53,7 @@ public class CommonUtils {
 				PreparedStatement ps=conn.prepareStatement(EMP_QUERY);
 				ps.setInt(1,empId);
 				ResultSet rs=ps.executeQuery();
-				if(rs!=null){
+				if(rs!=null  && rs.next()){
 					System.out.println("Got results from DB");
 					employee = new Employee();
 					employee.setAddress(rs.getString("ADDRESS"));
@@ -90,7 +90,7 @@ public class CommonUtils {
 				PreparedStatement ps=conn.prepareStatement(SSO_MATCH);
 				ps.setString(1,employee.getVzid());
 				ResultSet rs=ps.executeQuery();
-				if(rs!=null){
+				if(rs!=null && rs.next()){
 					System.out.println("Got results from DB");
 					if(password!=null && password.equalsIgnoreCase(rs.getString("PASSWORD")))
 						 authenticated=true;
