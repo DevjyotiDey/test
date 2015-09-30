@@ -65,7 +65,7 @@ public class feedServlet extends HttpServlet
 				System.out.println("Added interview details");
 				request.setAttribute("message", "SUCCESS!! Stored interview details.");
 			}
-			request.getRequestDispatcher("/intView.jsp").forward(request, response);
+			request.getRequestDispatcher("/Feeder/intView.jsp").forward(request, response);
 		}
 		catch(Exception e)
 		{
