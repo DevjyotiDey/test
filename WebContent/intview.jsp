@@ -38,6 +38,20 @@ intList.addAll(intweObj.getInterviewsGiven());
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript" class="init">
+	function addFeedback()
+	{
+       	document.getElementById("feedback").reset();
+       	document.getElementById("intDate").focus();
+       	document.getElementById("feed").style.display = "block";
+		document.getElementById("list").style.display = "none";
+    }
+    
+    function cancel()
+    {
+    	document.getElementById("feed").style.display = "none";
+		document.getElementById("list").style.display = "inline";
+    }
+	
 	$(document).ready(function()
 	{
 		$('#intvw').DataTable();
@@ -81,15 +95,7 @@ intList.addAll(intweObj.getInterviewsGiven());
                     document.body.scrollLeft = window.pageXOffset;
                 }
             }
-        }
-        
-        function feedDetails()
-        {
-        	document.getElementById("feedback").reset();
-        	document.getElementById("feed").style.display = "block";
-			document.getElementById("list").style.display = "none";
-			document.getElementById("intDate").focus();
-        }
+        }       
         
         function details(String rslt)
         {
@@ -100,11 +106,7 @@ intList.addAll(intweObj.getInterviewsGiven());
         {
         }
         
-        function cancel()
-        {
-        	document.getElementById("feed").style.display = "none";
-			document.getElementById("list").style.display = "inline";
-        }
+        
     </script>
 </head>
 
@@ -129,7 +131,7 @@ intList.addAll(intweObj.getInterviewsGiven());
           <table border=1 width="100%">
             <tr>
               <td width="88%"><h2>Your list of interviews</h2></td>
-              <td width="12%"><div align="right"><a href="javascript:feedDetails();">Add Interview</a></div></td>
+              <td width="12%"><div align="right"><a href="javascript:addFeedback();">Add Interview</a></div></td>
             </tr>
           </table>
           <b class="shadow_divider"><b><b></b></b></b>

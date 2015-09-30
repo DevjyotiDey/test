@@ -81,10 +81,6 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
         	document.getElementById("login").reset();
         	document.getElementById("empid").focus();
         }
-        
-        function login()
-        {
-        }
     </script>
 </head>
 
