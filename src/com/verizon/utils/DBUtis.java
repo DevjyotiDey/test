@@ -63,7 +63,7 @@ public class DBUtis {
     public static boolean createInterview(InterviewDetail interview,Connection conn){
     	boolean retVal=false;
     	
-    	final String CREATE_INTERVIEW="insert into interview(INTERVIEW_DATE, INTERVIEW_TYPE, ADDL_DOCUMENT, RESULT, FEEDBACK, VENUE, EVALUATION_RESULT) values (?,?,?,?,?,?,?)";
+    	final String CREATE_INTERVIEW="insert into interview(INTERVIEW_DATE, INTERVIEW_TYPE, ADDL_DOCUMENT, RESULT, FEEDBACK, VENUE, EVALUATION_RESULT) values (SYSDATE(),?,?,?,?,?,?)";
     	
     	if(interview==null){
     		return retVal;
@@ -73,13 +73,13 @@ public class DBUtis {
 		if(conn!=null){
 			try {
 				PreparedStatement ps=conn.prepareStatement(CREATE_INTERVIEW);
-				ps.setDate(1,interview.getInterviewDate());
-				ps.setString(2,interview.getInterviewType());
-				ps.setBlob(3, interview.getAddlDocument());
-				ps.setString(4, interview.getResult());
-				ps.setString(5,interview.getFeedback());
-				ps.setString(6,interview.getVenue());
-				ps.setString(7, interview.getEvaluationResults());
+				//ps.setDate(1,interview.getInterviewDate());
+				ps.setString(1,interview.getInterviewType());
+				ps.setBlob(2, interview.getAddlDocument());
+				ps.setString(3, interview.getResult());
+				ps.setString(4,interview.getFeedback());
+				ps.setString(5,interview.getVenue());
+				ps.setString(6, interview.getEvaluationResults());
 				
 				ps.executeUpdate();
 				retVal=true;
