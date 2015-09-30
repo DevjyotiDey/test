@@ -7,11 +7,13 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
 %>
 
 <%@ page import="java.util.*"%>
-<%@ page import="com.verizon.vo.Interviewer"%>
-<%@ page import="com.verizon.vo.Interviewee"%>
+<%@ page import="com.verizon.vo.*"%>
 <%
 Interviewer intwrObj = request.getAttribute("interviewer")==null ? new Interviewer() : (Interviewer)request.getAttribute("interviewer");
+List<InterviewDetail> intwrList = intwrObj.getInterviews();
+
 Interviewee intweObj = request.getAttribute("interviewee")==null ? new Interviewee() : (Interviewee)request.getAttribute("interviewee");
+List<InterviewDetail> intweList = intweObj.getInterviews();
 %>
 
 <html lang="en">
@@ -88,7 +90,7 @@ Interviewee intweObj = request.getAttribute("interviewee")==null ? new Interview
 			document.getElementById("intDate").focus();
         }
         
-        function details()
+        function details(String rslt)
         {
         	window.open("evalDet.jsp", "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=510, width=980");
         }
@@ -144,29 +146,20 @@ Interviewee intweObj = request.getAttribute("interviewee")==null ? new Interview
             </tr>
           </thead>
           <tbody>
+            <% for(int i=0; i<intwrList.size(); i++){ %>
             <tr>
-                <td><%= intwrObj.getInterviews().get(0).getInterviewId() %></td>
-                <td>ABC</td>
-                <td>25-Sep-2015</td>
-                <td>Chennai RMZ</td>
-                <td>Backfill</td>
-                <td>Very Good</td>
-                <td>Selected</td>
-                <td>
-                	<a href="javascript:details('');"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
-                	<a href="javascript:download('');"><img src="img/attach.png" height="25px" width="25px" title="Download Attachments"/></a>
-                </td>
+            	<td><%= intwrList.get(i).getInterviewId() %></td>
+            	<td><%= intwrList.get(i).getInterviewDate() %></td>
+            	<td><%= intwrList.get(i).getVenue() %></td>
+            	<td><%= intwrList.get(i).getInterviewType() %></td>
+            	<td><%= intwrList.get(i).getFeedback() %></td>
+            	<td><%= intwrList.get(i).getResult() %></td>
+				<td>
+					<a href="javascript:details(<%= intwrList.get(i).getEvaluationResults() %>);"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
+					<a href="javascript:download(<%= intwrList.get(i).getAddlDocument() %>);"><img src="img/attach.png" height="25px" width="25px" title="Download Attachments"/></a>
+				</td>
             </tr>
-            <tr>
-                <td>00000002</td>
-                <td>DEF</td>
-                <td>28-Sep-2015</td>
-                <td>Chennai RMZ</td>
-                <td>Backfill</td>
-                <td>Poor</td>
-                <td>Rejected</td>
-                <td><a href="javascript:alert('Details');"><img src="img/details.png" height="15px" width="15px"/></a></td>
-            </tr>
+            <%} %>
          </table>
         </div>
         
