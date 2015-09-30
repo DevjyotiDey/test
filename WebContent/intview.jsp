@@ -12,7 +12,7 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
 Interviewer intwrObj = request.getAttribute("interviewer")==null ? new Interviewer() : (Interviewer)request.getAttribute("interviewer");
 Interviewee intweObj = request.getAttribute("interviewee")==null ? new Interviewee() : (Interviewee)request.getAttribute("interviewee");
 
-List<InterviewDetail> intList;
+List<InterviewDetail> intList = new ArrayList<InterviewDetail>();
 intList.addAll(intwrObj.getInterviews());
 intList.addAll(intweObj.getInterviewsGiven());
 %>
