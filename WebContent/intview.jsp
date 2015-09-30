@@ -12,7 +12,6 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
 Interviewer intwrObj = request.getAttribute("interviewer")==null ? new Interviewer() : (Interviewer)request.getAttribute("interviewer");
 Interviewee intweObj = request.getAttribute("interviewee")==null ? new Interviewee() : (Interviewee)request.getAttribute("interviewee");
 
-
 List<InterviewDetail> interviewerList = new ArrayList<InterviewDetail>();
 List<InterviewDetail> intervieweeList = new ArrayList<InterviewDetail>();
 interviewerList.addAll(intwrObj.getInterviews());
@@ -39,35 +38,17 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 
-<script type="text/javascript" class="init">
+<script type="text/javascript">
 
-	function addFeedback()
-	{
-	  	document.getElementById("feedback").reset();
-       	document.getElementById("intDate").focus();
-       	document.getElementById("feed").style.display = "block";
-		document.getElementById("list").style.display = "none";
-    }
-    
-    function cancel()
-    {
-    	document.getElementById("feed").style.display = "none";
-		document.getElementById("list").style.display = "inline";
-    }
-	
 	$(document).ready(function()
 	{
 		$('#intvw').DataTable();
 	} );
+
 </script>
 
-<script language=javaScript>
+<script type="text/javascript">
 
-	function details(String rslt)
-    {
-    	window.open("evalDet.jsp?result=" + rslt, "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=510, width=980");
-    }
-    
     function download()
     {
     }
@@ -110,6 +91,7 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
         }        
         
     </script>
+    
 </head>
 
 <body>
@@ -129,7 +111,7 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
         <div class="clear"></div>
       </section>
       <section id="intro" style="border:none;">
-        <div id="list" class="grid_12" style="display:inline">
+        <div id="list" class="grid_12">
           <table border=1 width="100%">
             <tr>
               <td width="88%"><h2>Your list of interviews</h2></td>
@@ -352,4 +334,36 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
 </div>
 
 </body>
+
+<script type="text/javascript">
+	
+	function details(String rslt)
+    {
+    	window.open("evalDet.jsp?result=" + rslt, "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=510, width=980");
+    }
+    
+</script>
+
+<script type="text/javascript">
+	
+	function cancel()
+    {
+    	document.getElementById("feed").style.display = "none";
+		document.getElementById("list").style.display = "inline";
+    }
+    
+</script>
+
+<script type="text/javascript">
+
+	function addFeedback()
+	{
+	  	document.getElementById("feedback").reset();
+       	document.getElementById("cndName").focus();
+       	document.getElementById("feed").style.display = "block";
+		document.getElementById("list").style.display = "none";
+    }
+    
+</script>
+
 </html>
