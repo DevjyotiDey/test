@@ -64,7 +64,7 @@ public class feedServlet extends HttpServlet
 				//request.setAttribute("message", "ERROR!! Unable to update interview details.");
 			}else{
 				System.out.println("Added interview details");
-				request.setAttribute("message", "SUCCESS!! Stored interview details.");
+				//request.setAttribute("message", "SUCCESS!! Stored interview details.");
 			}
 			
 			request.getRequestDispatcher("/loginServlet?empid="+vzId+"&password="+pwd).forward(request, response);
