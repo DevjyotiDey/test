@@ -152,7 +152,7 @@ intList.addAll(intweObj.getInterviewsGiven());
             	<td><%= intList.get(i).getInterviewId() %></td>
             	<td><%=  %></td>
             	<td><%= intList.get(i).getInterviewDate() %></td>
-            	<td><%= intList.get(i).getVenue()!=null ? intwrList.get(i).getVenue() : '' %></td>
+            	<td><%= intList.get(i).getVenue()!=null ? intList.get(i).getVenue() : '' %></td>
             	<td><%= intList.get(i).getInterviewType() %></td>
             	<td><%= intList.get(i).getFeedback() %></td>
             	<td><%= intList.get(i).getResult() %></td>
