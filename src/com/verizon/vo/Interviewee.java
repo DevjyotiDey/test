@@ -8,7 +8,15 @@ public class Interviewee {
 	private String intervieweeName;
 	private String intervieweeOrg;
 	private String mobileNumber;
+	private int interviewId;
 	
+	public int getInterviewId() {
+		return interviewId;
+	}
+	public void setInterviewId(int interviewId) {
+		this.interviewId = interviewId;
+	}
+
 	private Employee employee;
 	private ArrayList<InterviewDetail> interviewsGiven=new ArrayList<InterviewDetail>();
 	
