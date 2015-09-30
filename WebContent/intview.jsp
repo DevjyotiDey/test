@@ -1,6 +1,9 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%if(request.getSession(false) == null){%>
+	alert("OOPS!! Session Expired, plz Login");
+<%}%>
 <%
 String name = request.getAttribute("name")==null ? "" : String.valueOf(request.getAttribute("name"));
 String message = request.getAttribute("message")==null ? "" : String.valueOf(request.getAttribute("message"));
@@ -107,7 +110,7 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
         <div class="grid_8">
           <h1 style="margin:5px 0;">VZ Feeder</h1>
         </div>
-        <div align="right">Logged in as <a href="/index.jsp" data-toggle="tooltip" title="Logout?" style="text-decoration:none"><%=name%></a> &nbsp;</div>
+        <div align="right">Logged in : <a href="/index.jsp" data-toggle="tooltip" title="Logout?" style="text-decoration:none"><%=name%></a> &nbsp;</div>
         <div class="clear"></div>
       </section>
       <section id="intro" style="border:none;">

@@ -29,8 +29,13 @@ public class feedServlet extends HttpServlet
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		try
-		{
-			String vzId = (String)request.getParameter("empid");
+		{   
+			if(request.getSession(false) == null){
+				request.setAttribute("message", "OOPS!! Session expired, plz Login");
+				request.getRequestDispatcher("/index.jsp").forward(request, response);
+			}
+			Employee emp=(Employee)request.getSession(false).getAttribute("Employee");
+			String vzId = emp.getVzid();
 			String pwd = (String)request.getParameter("password");
 			
 			InterviewDetail intDet = new InterviewDetail();
@@ -50,14 +55,8 @@ public class feedServlet extends HttpServlet
 			interviewee.setIntervieweeName(request.getParameter("cndName"));
 			
 			Interviewer interviewer = new Interviewer();
-			try
-			{
-				interviewer.setInterviewerEmpId(Integer.parseInt(request.getParameter("empid")));
-			}
-			catch(NumberFormatException e)
-			{
-				
-			}
+
+			interviewer.setInterviewerEmpId(emp.getEmployeeID());
 			
 			if(!DBUtis.insertAll(intDet, interviewee, interviewer))
 			{

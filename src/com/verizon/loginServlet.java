@@ -38,9 +38,11 @@ public class loginServlet extends HttpServlet
 			if(authenticated)
 			{
 				httpSession=request.getSession();
+				httpSession.setMaxInactiveInterval(60);
 				httpSession.setAttribute("Employee", employee);
 				httpSession.setAttribute("EmployeeName",employee.getEmployeeName());
 				request.setAttribute("name", employee.getEmployeeName());
+
 				
 				Interviewee interviewee=CommonUtils.getInterviewee(employee);
 				Interviewer interviewer=CommonUtils.getInterviewer(employee);
