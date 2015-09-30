@@ -4,6 +4,7 @@
 <%
 String name = request.getAttribute("name")==null ? "" : String.valueOf(request.getAttribute("name"));
 String message = request.getAttribute("message")==null ? "" : String.valueOf(request.getAttribute("message"));
+%>
 
 <%@ page import="java.util.*"%>
 <%@ page import="com.verizon.vo.Interviewer"%>
@@ -11,7 +12,6 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
 <%
 Interviewer intwrObj = request.getAttribute("interviewer")==null ? new Interviewer() : (Interviewer)request.getAttribute("interviewer");
 Interviewee intweObj = request.getAttribute("interviewee")==null ? new Interviewee() : (Interviewee)request.getAttribute("interviewee");
-%>
 %>
 
 <html lang="en">
