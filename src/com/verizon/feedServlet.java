@@ -35,10 +35,12 @@ public class feedServlet extends HttpServlet
 			
 			InterviewDetail intDet = new InterviewDetail();
 			intDet.setIntervieweeName(request.getParameter("cndName"));
+			intDet.setFeedback(request.getParameter("intRem"));
+			
 			intDet.setVenue(request.getParameter("intVenue"));
 			intDet.setInterviewType(request.getParameter("intEvent"));
-			intDet.setFeedback(request.getParameter("intRem"));
 			intDet.setResult(request.getParameter("intRslt"));
+			
 			intDet.setEvaluationResults(request.getParameter("intC1") + "," + request.getParameter("intC2") + "," + request.getParameter("intC3") + ","
 				+ request.getParameter("intC4") + "," + request.getParameter("intC5") + "," + request.getParameter("intC6"));
 			

@@ -184,7 +184,7 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
 	                </div></td>
 	                <td width="15%"><label>Interview Venue</label></td>
 	                <td width="35%"><div class="sso_box">
-	                	<select id="intVenue" title="Select a venue" style="width:250px">
+	                	<select id="intVenue" name="intVenue" title="Select a venue" style="width:250px">
 						   <option value="otp">Chennai OTP</option>
 						   <option value="rmz">Chennai RMZ</option>
 						   <option value="tit">Hyderabad Titus</option>
@@ -206,7 +206,7 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
 	                </div></td>
 	                <td width="15%"><label>Event Type</label></td>
 	                <td width="35%"><div class="sso_box">
-	                	<select id="intEvent" title="Select an event" style="width:250px">
+	                	<select id="intEvent" name="intEvent" title="Select an event" style="width:250px">
 						   <option value="cmp">Campus</option>
 						   <option value="viv">VIVM Backfill</option>
 						   <option value="ijp">Internal Job Posting</option>
@@ -224,11 +224,11 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
 	               <tr>
 	              	<td width="15%"><label>Remarks</label></td>
 	                <td width="35%"><div class="sso_box">
-	                	<input type="text" id="intRem" name='intRem' title='Final Remarks' tabindex=5 size="36">
+	                	<input type="text" id="intRem" name="intRem" title='Final Remarks' tabindex=5 size="36">
 	                </div></td>
 	                <td width="15%"><label>Result</label></td>
 	                <td width="35%"><div class="sso_box">
-	                	<select id="intRslt" title="Select a result" style="width:250px">
+	                	<select id="intRslt" name="intRslt" title="Select a result" style="width:250px">
 						   <option value="rec">Recommended</option>
 						   <option value="sht">Shortlisted</option>
 						   <option value="nor">Not Recommended</option>
