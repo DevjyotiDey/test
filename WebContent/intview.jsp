@@ -92,7 +92,7 @@ List<InterviewDetail> intweList = intweObj.getInterviewsGiven();
         
         function details(String rslt)
         {
-        	window.open("evalDet.jsp", "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=510, width=980");
+        	window.open("evalDet.jsp?result=" + rslt, "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=510, width=980");
         }
         
         function download()
@@ -149,8 +149,9 @@ List<InterviewDetail> intweList = intweObj.getInterviewsGiven();
             <% for(int i=0; i<intwrList.size(); i++){ %>
             <tr>
             	<td><%= intwrList.get(i).getInterviewId() %></td>
+            	<td><%=  %></td>
             	<td><%= intwrList.get(i).getInterviewDate() %></td>
-            	<td><%= intwrList.get(i).getVenue() %></td>
+            	<td><%= intwrList.get(i).getVenue()!=null ? intwrList.get(i).getVenue() : '' %></td>
             	<td><%= intwrList.get(i).getInterviewType() %></td>
             	<td><%= intwrList.get(i).getFeedback() %></td>
             	<td><%= intwrList.get(i).getResult() %></td>
