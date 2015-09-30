@@ -17,4 +17,13 @@
     <url-pattern>/loginServlet/*</url-pattern>
 </servlet-mapping>
 
+<servlet>
+    <servlet-name>feedServlet</servlet-name>
+    <servlet-class>com.verizon.feedServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>feedServlet</servlet-name>
+    <url-pattern>/feedServlet/*</url-pattern>
+</servlet-mapping>
+
 </web-app>
