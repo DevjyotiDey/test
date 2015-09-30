@@ -176,8 +176,8 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
             	<td><%= intervieweeList.get(i).getFeedback() %></td>
             	<td><%= intervieweeList.get(i).getResult() %></td>
 				<td>
-					<a href="javascript:details(<%= interviewerList.get(i).getEvaluationResults() %>);"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
-					<a href="javascript:download(<%= interviewerList.get(i).getAddlDocument() %>);"><img src="img/attach.png" height="25px" width="25px" title="Download Attachments"/></a>
+					<a href="javascript:details(<%= intervieweeList.get(i).getEvaluationResults() %>);"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
+					<a href="javascript:download(<%= intervieweeList.get(i).getAddlDocument() %>);"><img src="img/attach.png" height="25px" width="25px" title="Download Attachments"/></a>
 				</td>
             </tr>
             <%} %>
