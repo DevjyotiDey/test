@@ -81,7 +81,7 @@ public class DBUtis {
 				ps.setString(6,interview.getVenue());
 				ps.setString(7, interview.getEvaluationResults());
 				
-				ps.execute();
+				ps.executeUpdate();
 				retVal=true;
 			}catch(Exception e){
 				e.printStackTrace();
@@ -115,7 +115,7 @@ public class DBUtis {
 				ps.setString(5,interviewee.getMobileNumber());
 				ps.setInt(6,getLastInsertId(conn));
 				
-				ps.execute();
+				ps.executeUpdate();
 				returnVal=true;
 			}catch(Exception e){
 				e.printStackTrace();
@@ -134,7 +134,7 @@ public class DBUtis {
 				PreparedStatement ps=conn.prepareStatement("INSERT INTO INTERVIEWER VALUES(?,?)");
 				ps.setInt(1, getLastInsertId(conn));
 				ps.setInt(2, interviewer.getInterviewerEmpId());
-				ps.execute();
+				ps.executeUpdate();
 				retVal=true;
 			}catch(Exception e){
 				
