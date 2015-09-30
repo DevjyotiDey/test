@@ -12,10 +12,9 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
 Interviewer intwrObj = request.getAttribute("interviewer")==null ? new Interviewer() : (Interviewer)request.getAttribute("interviewer");
 Interviewee intweObj = request.getAttribute("interviewee")==null ? new Interviewee() : (Interviewee)request.getAttribute("interviewee");
 
-List<InterviewDetail> interviewerList = new ArrayList<InterviewDetail>();
-List<InterviewDetail> intervieweeList = new ArrayList<InterviewDetail>();
-interviewerList.addAll(intwrObj.getInterviews());
-intervieweeList.addAll(intweObj.getInterviewsGiven());
+List<InterviewDetail> intList = new ArrayList<InterviewDetail>();
+intList.addAll(intwrObj.getInterviews());
+intList.addAll(intweObj.getInterviewsGiven());
 %>
 
 <html lang="en">
@@ -39,9 +38,10 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript" class="init">
+
 	function addFeedback()
 	{
-       	document.getElementById("feedback").reset();
+	  	document.getElementById("feedback").reset();
        	document.getElementById("intDate").focus();
        	document.getElementById("feed").style.display = "block";
 		document.getElementById("list").style.display = "none";
@@ -60,6 +60,15 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
 </script>
 
 <script language=javaScript>
+
+	function details(String rslt)
+    {
+    	window.open("evalDet.jsp?result=" + rslt, "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=510, width=980");
+    }
+    
+    function download()
+    {
+    }
 
 		<% if(message!=null && message.trim().length()>0){ %>
 			var message = '<%=message%>';
@@ -96,17 +105,7 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
                     document.body.scrollLeft = window.pageXOffset;
                 }
             }
-        }       
-        
-        function details(String rslt)
-        {
-        	window.open("evalDet.jsp?result=" + rslt, "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=510, width=980");
-        }
-        
-        function download()
-        {
-        }
-        
+        }        
         
     </script>
 </head>
@@ -150,33 +149,18 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
             </tr>
           </thead>
           <tbody>
-            <% for(int i=0; i<interviewerList.size(); i++){ %>
+            <% for(int i=0; i<intList.size(); i++){ %>
             <tr>
-            	<td><%= interviewerList.get(i).getInterviewId() %></td>
-            	<td><%= interviewerList.get(i).getIntervieweeName()%></td>
-            	<td><%= interviewerList.get(i).getInterviewDate() %></td>
-            	<td><%= interviewerList.get(i).getVenue()!=null ? interviewerList.get(i).getVenue() : "" %></td>
-            	<td><%= interviewerList.get(i).getInterviewType() %></td>
-            	<td><%= interviewerList.get(i).getFeedback() %></td>
-            	<td><%= interviewerList.get(i).getResult() %></td>
+            	<td><%= intList.get(i).getInterviewId() %></td>
+            	<td></td>
+            	<td><%= intList.get(i).getInterviewDate() %></td>
+            	<td><%= intList.get(i).getVenue()!=null ? intList.get(i).getVenue() : "" %></td>
+            	<td><%= intList.get(i).getInterviewType() %></td>
+            	<td><%= intList.get(i).getFeedback() %></td>
+            	<td><%= intList.get(i).getResult() %></td>
 				<td>
-					<a href="javascript:details(<%= interviewerList.get(i).getEvaluationResults() %>);"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
-					<a href="javascript:download(<%= interviewerList.get(i).getAddlDocument() %>);"><img src="img/attach.png" height="25px" width="25px" title="Download Attachments"/></a>
-				</td>
-            </tr>
-            <%} %>
-            <% for(int i=0; i<intervieweeList.size(); i++){ %>
-            <tr>
-            	<td><%= intervieweeList.get(i).getInterviewId() %></td>
-            	<td><%= intervieweeList.get(i).getInterviewerName()%></td>
-            	<td><%= intervieweeList.get(i).getInterviewDate() %></td>
-            	<td><%= intervieweeList.get(i).getVenue()!=null ? interviewerList.get(i).getVenue() : "" %></td>
-            	<td><%= intervieweeList.get(i).getInterviewType() %></td>
-            	<td><%= intervieweeList.get(i).getFeedback() %></td>
-            	<td><%= intervieweeList.get(i).getResult() %></td>
-				<td>
-					<a href="javascript:details(<%= intervieweeList.get(i).getEvaluationResults() %>);"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
-					<a href="javascript:download(<%= intervieweeList.get(i).getAddlDocument() %>);"><img src="img/attach.png" height="25px" width="25px" title="Download Attachments"/></a>
+					<a href="javascript:details(<%= intList.get(i).getEvaluationResults() %>);"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
+					<a href="javascript:download(<%= intList.get(i).getAddlDocument() %>);"><img src="img/attach.png" height="25px" width="25px" title="Download Attachments"/></a>
 				</td>
             </tr>
             <%} %>
@@ -195,9 +179,9 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
 	            <form id="feedback" name="feedback" method="post" action="feedServlet">
 	              <table class="display" width="100%">
 	               <tr>
-	              	<td width="15%"><label>Interview Date</label></td>
+	              	<td width="15%"><label>Candidate Name</label></td>
 	                <td width="35%"><div class="sso_box">
-	                	<input type="text" id="intDate" name='intDate' title='Interview Date' tabindex=1 size="36">
+	                	<input type="text" id="cndName" name='cndName' title='Candidate Name' tabindex=1 size="36">
 	                </div></td>
 	                <td width="15%"><label>Interview Venue</label></td>
 	                <td width="35%"><div class="sso_box">
@@ -217,9 +201,9 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
 	               	<td width="35%">&nbsp;</td>
 	               </tr>
 	               <tr>
-	              	<td width="15%"><label>Candidate Name</label></td>
+	              	<td width="15%"><label>Contact</label></td>
 	                <td width="35%"><div class="sso_box">
-	                	<input type="text" id="cndName" name='cndName' title='Candidate Name' tabindex=3 size="36">
+	                	<input type="text" id="contNo" name='contNo' title='Contact Number' tabindex=3 size="36">
 	                </div></td>
 	                <td width="15%"><label>Event Type</label></td>
 	                <td width="35%"><div class="sso_box">

@@ -25,6 +25,11 @@ public class loginServlet extends HttpServlet
 		{
 			String vzId = (String)request.getParameter("empid");
 			String pwd = (String)request.getParameter("password");
+			
+			// For local testing
+			//request.setAttribute("name", "Test");
+			//request.getRequestDispatcher("intview.jsp").forward(request, response);
+			
 			Employee employee = CommonUtils.getEmployee(vzId);
 			System.out.println("employee =" + employee.getVzid());
 			

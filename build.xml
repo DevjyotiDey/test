@@ -45,6 +45,7 @@
 	</target>
 	<target depends="build" name="package" description="Packagign all files into ${project.war}">
 		<war destfile="dist/${project.war}" index="true" basedir="dist">
+		<!--<war destfile="C:\Users\Administrator\Desktop\apache-tomcat-8.0.26\webapps\${project.war}" index="true" basedir="dist">-->
 			<classes dir="${project.classes.dir}" />
 			<lib dir="${project.lib.dir}" />
 			<fileset dir="${project.web.dir}">

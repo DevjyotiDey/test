@@ -2,8 +2,8 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-String name = request.getAttribute("name")==null ? "" : String.valueOf(request.getAttribute("name"));
-String message = request.getAttribute("message")==null ? "" : String.valueOf(request.getAttribute("message"));
+String result = request.getParameter("result");
+String [] criteria = result.split(",");
 %>
 
 <html lang="en">
@@ -27,20 +27,17 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript" class="init">
+
 	$(document).ready(function()
 	{
 		$('#evdet').DataTable({bFilter: false, bInfo: false, bPaginate: false});
 	} );
+	
 </script>
 
 <script language=javaScript>
 
-		<% if(message!=null && message.trim().length()>0){ %>
-			var message = '<%=message%>';
-			alert(message);
-		<% }%>
-		
-        // check if browser is Netscape
+		// check if browser is Netscape
         // if Netscape, capture the event
         if (navigator.appName == "Netscape")
         {
@@ -84,64 +81,39 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
           <table id="evdet" class="display" cellspacing="0" width="100%">
           <thead>
             <tr>
-                <th>Criteria</th>
-                <th>5</th>
-                <th>4</th>
-                <th>3</th>
-                <th>2</th>
-                <th>1</th>
+                <th width="85%">Criteria</th>
+                <th width="15%">Rating</th>
             </tr>
         </thead>
         <tbody>
+        	<div id="critDiv">
             <tr>
                 <td>Communication and Listening</td>
-                <td style="background-color:red"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><%= criteria[0] %></td>
             </tr>
             <tr>
                 <td>Problem Solving</td>
-                <td style="background-color:red"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><%= criteria[1] %></td>
             </tr>
             <tr>
                 <td>Quality Orientation</td>
-                <td></td>
-                <td style="background-color:red"></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><%= criteria[2] %></td>
             </tr>
             <tr>
                 <td>Adaptability and Change Management</td>
-                <td></td>
-                <td style="background-color:red"></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><%= criteria[3] %></td>
             </tr>
             <tr>
                 <td>Teamwork</td>
-                <td></td>
-                <td style="background-color:red"></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><%= criteria[4] %></td>
             </tr>
             <tr>
                 <td>Innovation</td>
-                <td style="background-color:red"></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td><%= criteria[5] %></td>
             </tr>
-       </table>
+           </div>
+          </tbody>
+        </table>
         </div>
         <div class="clear"></div>
       </section>
