@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import com.verizon.vo.*;
 import com.verizon.utils.CommonUtils;
 import com.verizon.utils.DBUtis;
@@ -20,7 +21,12 @@ public class feedServlet extends HttpServlet
         super();
     }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+    {
+    	doPost(request,response);
+    }
+    
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		try
 		{
@@ -54,9 +60,12 @@ public class feedServlet extends HttpServlet
 			if(!DBUtis.insertAll(intDet, interviewee, interviewer))
 			{
 				System.out.println("Unable to add interview details");
-				request.setAttribute("message", "ERROR! Unable to update interview details.");
-				request.getRequestDispatcher("intView.jsp").forward(request, response);
+				request.setAttribute("message", "ERROR!! Unable to update interview details.");
+			}else{
+				System.out.println("Added interview details");
+				request.setAttribute("message", "SUCCESS!! Stored interview details.");
 			}
+			request.getRequestDispatcher("/intView.jsp").forward(request, response);
 		}
 		catch(Exception e)
 		{
