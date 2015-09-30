@@ -67,13 +67,12 @@ public class feedServlet extends HttpServlet
 				request.setAttribute("message", "SUCCESS!! Stored interview details.");
 			}
 			
-			request.getRequestDispatcher("/intview.jsp?empid="+vzId+"&password="+pwd).forward(request, response);
+			request.getRequestDispatcher("/loginServlet?empid="+vzId+"&password="+pwd).forward(request, response);
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-		
 	}
 	
 }
