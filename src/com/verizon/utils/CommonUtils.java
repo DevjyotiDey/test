@@ -118,8 +118,10 @@ public class CommonUtils {
 		
 		
 		final String GET_INTERVIEWEE="SELECT intwe.INTERVIEWEE_NAME, intwe.INTERVIEWEE_ORG, intwe.EMPLOYEE_ID, intwe.ADDRESS,"
-				+ " intwe.MOBILE_NO, intwe.INTERVIEWEE_ID,intv.* FROM INTERVIEWEE intwe, INTERVIEW intv WHERE"
-				+ " intwe.INTERVIEW_ID=intv.INTERVIEW_ID  and intwe.EMPLOYEE_ID=?";
+				+ "intwe.MOBILE_NO, intwe.INTERVIEWEE_ID,intv.*,e.EMPLOYEE_NAME INTERVIEWER_NAME FROM "
+				+ "INTERVIEWEE intwe, INTERVIEW intv,INTERVIEWER intvr,EMPLOYEE e WHERE "
+				+ "intwe.INTERVIEW_ID=intv.INTERVIEW_ID and intvr.INTERVIEW_ID=intwe.INTERVIEW_ID "
+				+ "and e.EMPLOYEE_ID=intvr.INTERVIEWER_EMP_ID and intwe.EMPLOYEE_ID=?";
 		
 		Connection conn=DBUtis.getConnection();
 		
@@ -150,6 +152,7 @@ public class CommonUtils {
 						 interview.setInterviewType(rs.getString("INTERVIEW_TYPE"));
 						 interview.setResult(rs.getString("RESULT"));
 						 interview.setVenue(rs.getString("VENUE"));
+						 interview.setInterviewerName(rs.getString("INTERVIEWER_NAME"));
 						 interviewsGiven.add(interview);
 					}
 				}
@@ -247,9 +250,10 @@ public class CommonUtils {
 		
 		System.out.println("Entering getInterviewer("+employee+")");
 		
-		final String GET_INTERVIEWER="SELECT invr.INTERVIEWER_EMP_ID,inv.* FROM "
-				+ "interviewer invr,interview inv WHERE "
-				+ "invr.INTERVIEW_ID=inv.INTERVIEW_ID and invr.INTERVIEWER_EMP_ID=?";
+		final String GET_INTERVIEWER="SELECT invr.INTERVIEWER_EMP_ID,inv.*,intvwe.INTERVIEWEE_NAME INTERVIEWEE_NAME FROM "
+				+ "interviewer invr,interview inv,interviewee intvwe WHERE "
+				+ "invr.INTERVIEW_ID=inv.INTERVIEW_ID and intvwe.INTERVIEW_ID=inv.INTERVIEW_ID and "
+				+ "invr.INTERVIEWER_EMP_ID=?";
 		
 		Connection conn=DBUtis.getConnection();
 		
@@ -277,6 +281,7 @@ public class CommonUtils {
 						 interview.setInterviewType(rs.getString("INTERVIEW_TYPE"));
 						 interview.setResult(rs.getString("RESULT"));
 						 interview.setVenue(rs.getString("VENUE"));
+						 interview.setIntervieweeName(rs.getString("INTERVIEWEE_NAME"));
 						 interviewsTaken.add(interview);
 					}
 				}
