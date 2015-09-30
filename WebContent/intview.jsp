@@ -107,7 +107,7 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
         <div class="grid_8">
           <h1 style="margin:5px 0;">VZ Feeder</h1>
         </div>
-        <div align="right">Logged in as <%=name%> &nbsp;</div>
+        <div align="right">Logged in as <a href="/index.jsp" data-toggle="tooltip" title="Logout?" style="text-decoration:none"><%=name%></a> &nbsp;</div>
         <div class="clear"></div>
       </section>
       <section id="intro" style="border:none;">

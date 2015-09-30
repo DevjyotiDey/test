@@ -5,6 +5,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.verizon.vo.*;
 import com.verizon.utils.CommonUtils;
@@ -25,7 +26,7 @@ public class loginServlet extends HttpServlet
 		{
 			String vzId = (String)request.getParameter("empid");
 			String pwd = (String)request.getParameter("password");
-			
+			HttpSession httpSession=null;
 			// For local testing
 			//request.setAttribute("name", "Test");
 			//request.getRequestDispatcher("intview.jsp").forward(request, response);
@@ -36,7 +37,11 @@ public class loginServlet extends HttpServlet
 			boolean authenticated=CommonUtils.authenticateUser(employee,pwd);
 			if(authenticated)
 			{
+				httpSession=request.getSession();
+				httpSession.setAttribute("Employee", employee);
+				httpSession.setAttribute("EmployeeName",employee.getEmployeeName());
 				request.setAttribute("name", employee.getEmployeeName());
+				
 				Interviewee interviewee=CommonUtils.getInterviewee(employee);
 				Interviewer interviewer=CommonUtils.getInterviewer(employee);
 				if(interviewee!=null){
