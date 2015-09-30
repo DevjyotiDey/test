@@ -13,7 +13,21 @@ public class InterviewDetail {
 	private String venue;
 	private String evaluationResults;
 	private Blob addlDocument;
+	private String interviewerName;
+	private String intervieweeName;
 	
+	public String getInterviewerName() {
+		return interviewerName;
+	}
+	public void setInterviewerName(String interviewerName) {
+		this.interviewerName = interviewerName;
+	}
+	public String getIntervieweeName() {
+		return intervieweeName;
+	}
+	public void setIntervieweeName(String intervieweeName) {
+		this.intervieweeName = intervieweeName;
+	}
 	public Blob getAddlDocument() {
 		return addlDocument;
 	}
