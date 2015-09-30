@@ -13,7 +13,7 @@ Interviewer intwrObj = request.getAttribute("interviewer")==null ? new Interview
 List<InterviewDetail> intwrList = intwrObj.getInterviews();
 
 Interviewee intweObj = request.getAttribute("interviewee")==null ? new Interviewee() : (Interviewee)request.getAttribute("interviewee");
-List<InterviewDetail> intweList = intweObj.getInterviews();
+List<InterviewDetail> intweList = intweObj.getInterviewsGiven();
 %>
 
 <html lang="en">
