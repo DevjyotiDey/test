@@ -43,8 +43,8 @@ public class feedServlet extends HttpServlet
 				+ request.getParameter("intC4") + "," + request.getParameter("intC5") + "," + request.getParameter("intC6"));
 			
 			Interviewee interviewee = new Interviewee();
-			interviewee.setAddress(request.getParameter("cntNo"));
-			interviewee.setMobileNumber(request.getParameter("cntNo"));
+			interviewee.setAddress(request.getParameter("contNo"));
+			interviewee.setMobileNumber(request.getParameter("contNo"));
 			interviewee.setIntervieweeName(request.getParameter("cndName"));
 			
 			Interviewer interviewer = new Interviewer();
@@ -65,7 +65,7 @@ public class feedServlet extends HttpServlet
 				System.out.println("Added interview details");
 				request.setAttribute("message", "SUCCESS!! Stored interview details.");
 			}
-			request.getRequestDispatcher("/Feeder/intView.jsp").forward(request, response);
+			request.getRequestDispatcher("/intview.jsp").forward(request, response);
 		}
 		catch(Exception e)
 		{
