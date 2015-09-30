@@ -153,7 +153,7 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
             <% for(int i=0; i<interviewerList.size(); i++){ %>
             <tr>
             	<td><%= interviewerList.get(i).getInterviewId() %></td>
-            	<td><%= interviewerList.get(i).getInterviewerName()%></td>
+            	<td><%= interviewerList.get(i).getIntervieweeName()%></td>
             	<td><%= interviewerList.get(i).getInterviewDate() %></td>
             	<td><%= interviewerList.get(i).getVenue()!=null ? interviewerList.get(i).getVenue() : "" %></td>
             	<td><%= interviewerList.get(i).getInterviewType() %></td>
@@ -168,7 +168,7 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
             <% for(int i=0; i<intervieweeList.size(); i++){ %>
             <tr>
             	<td><%= intervieweeList.get(i).getInterviewId() %></td>
-            	<td><%= intervieweeList.get(i).getIntervieweeName()%></td>
+            	<td><%= intervieweeList.get(i).getInterviewerName()%></td>
             	<td><%= intervieweeList.get(i).getInterviewDate() %></td>
             	<td><%= intervieweeList.get(i).getVenue()!=null ? interviewerList.get(i).getVenue() : "" %></td>
             	<td><%= intervieweeList.get(i).getInterviewType() %></td>
