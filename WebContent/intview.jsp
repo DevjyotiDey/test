@@ -4,6 +4,15 @@
 <%
 String name = request.getAttribute("name")==null ? "" : String.valueOf(request.getAttribute("name"));
 String message = request.getAttribute("message")==null ? "" : String.valueOf(request.getAttribute("message"));
+
+<%@ page import="java.util.*"%>
+<%@ page import="com.verizon.vo.Interviewer"%>
+<%@ page import="com.verizon.vo.Interviewee"%>
+<%
+Interviewer intwrObj = request.getAttribute("interviewer")==null ? new Interviewer() : (Interviewer)request.getAttribute("interviewer");
+Interviewee intweObj = request.getAttribute("interviewee")==null ? new Interviewee() : (Interviewee)request.getAttribute("interviewee");
+String message = request.getAttribute("message")==null ? "" : String.valueOf(request.getAttribute("message"));
+%>
 %>
 
 <html lang="en">
@@ -137,7 +146,7 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
           </thead>
           <tbody>
             <tr>
-                <td>00000001</td>
+                <td><%= intwrObj.getInterviews().get(0).getInterviewId() %></td>
                 <td>ABC</td>
                 <td>25-Sep-2015</td>
                 <td>Chennai RMZ</td>

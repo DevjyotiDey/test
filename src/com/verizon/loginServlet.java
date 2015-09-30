@@ -35,10 +35,10 @@ public class loginServlet extends HttpServlet
 				Interviewee interviewee=CommonUtils.getInterviewee(employee);
 				Interviewer interviewer=CommonUtils.getInterviewer(employee);
 				if(interviewee!=null){
-					request.setAttribute("com.verizon.vo.Interviewee", interviewee);
+					request.setAttribute("interviewee", interviewee);
 				}
 				if(interviewer!=null){
-					request.setAttribute("com.verizon.vo.Interviewer", interviewer);
+					request.setAttribute("interviewer", interviewer);
 				}
 				request.getRequestDispatcher("intview.jsp").forward(request, response);
 			}
