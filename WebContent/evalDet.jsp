@@ -4,10 +4,12 @@
 <%if(request.getSession(false) == null){%>
 	alert("OOPS!! Session Expired, plz Login");
 <%}%>
-<%
-String result = request.getParameter("result");
-String [] criteria = result.split(",");
-%>
+
+<%if(request.getSession(false) == null){%>
+	<script>alert("OOPS!! Session Expired, plz Login");</script>
+<%	
+request.getRequestDispatcher("/index.jsp").forward(request, response);
+}%>
 
 <html lang="en">
 <head>

@@ -2,8 +2,11 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%if(request.getSession(false) == null){%>
-	alert("OOPS!! Session Expired, plz Login");
-<%}%>
+	<script>alert("OOPS!! Session Expired, plz Login");</script>
+<%	
+request.getRequestDispatcher("/index.jsp").forward(request, response);
+}%>
+
 <%
 String name = request.getAttribute("name")==null ? "" : String.valueOf(request.getAttribute("name"));
 String message = request.getAttribute("message")==null ? "" : String.valueOf(request.getAttribute("message"));
