@@ -10,10 +10,11 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
 <%@ page import="com.verizon.vo.*"%>
 <%
 Interviewer intwrObj = request.getAttribute("interviewer")==null ? new Interviewer() : (Interviewer)request.getAttribute("interviewer");
-List<InterviewDetail> intwrList = intwrObj.getInterviews();
-
 Interviewee intweObj = request.getAttribute("interviewee")==null ? new Interviewee() : (Interviewee)request.getAttribute("interviewee");
-List<InterviewDetail> intweList = intweObj.getInterviewsGiven();
+
+List<InterviewDetail> intList = new ArrayList<InterviewDetail>();
+intList.addAll(intwrObj.getInterviews());
+intList.addAll(intweObj.getInterviewsGiven());
 %>
 
 <html lang="en">
@@ -92,7 +93,7 @@ List<InterviewDetail> intweList = intweObj.getInterviewsGiven();
         
         function details(String rslt)
         {
-        	window.open("evalDet.jsp", "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=510, width=980");
+        	window.open("evalDet.jsp?result=" + rslt, "_blank", "toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=510, width=980");
         }
         
         function download()
@@ -146,17 +147,18 @@ List<InterviewDetail> intweList = intweObj.getInterviewsGiven();
             </tr>
           </thead>
           <tbody>
-            <% for(int i=0; i<intwrList.size(); i++){ %>
+            <% for(int i=0; i<intList.size(); i++){ %>
             <tr>
-            	<td><%= intwrList.get(i).getInterviewId() %></td>
-            	<td><%= intwrList.get(i).getInterviewDate() %></td>
-            	<td><%= intwrList.get(i).getVenue() %></td>
-            	<td><%= intwrList.get(i).getInterviewType() %></td>
-            	<td><%= intwrList.get(i).getFeedback() %></td>
-            	<td><%= intwrList.get(i).getResult() %></td>
+            	<td><%= intList.get(i).getInterviewId() %></td>
+            	<td></td>
+            	<td><%= intList.get(i).getInterviewDate() %></td>
+            	<td><%= intList.get(i).getVenue()!=null ? intList.get(i).getVenue() : "" %></td>
+            	<td><%= intList.get(i).getInterviewType() %></td>
+            	<td><%= intList.get(i).getFeedback() %></td>
+            	<td><%= intList.get(i).getResult() %></td>
 				<td>
-					<a href="javascript:details(<%= intwrList.get(i).getEvaluationResults() %>);"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
-					<a href="javascript:download(<%= intwrList.get(i).getAddlDocument() %>);"><img src="img/attach.png" height="25px" width="25px" title="Download Attachments"/></a>
+					<a href="javascript:details(<%= intList.get(i).getEvaluationResults() %>);"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
+					<a href="javascript:download(<%= intList.get(i).getAddlDocument() %>);"><img src="img/attach.png" height="25px" width="25px" title="Download Attachments"/></a>
 				</td>
             </tr>
             <%} %>
