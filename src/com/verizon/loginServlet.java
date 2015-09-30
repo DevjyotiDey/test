@@ -31,6 +31,7 @@ public class loginServlet extends HttpServlet
 			boolean authenticated=CommonUtils.authenticateUser(employee,pwd);
 			if(authenticated)
 			{
+				request.setAttribute("name", employee.getEmployeeName());
 				Interviewee interviewee=CommonUtils.getInterviewee(employee);
 				Interviewer interviewer=CommonUtils.getInterviewer(employee);
 				if(interviewee!=null){

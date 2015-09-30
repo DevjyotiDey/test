@@ -1,5 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
 String message = request.getAttribute("message")==null ? "" : String.valueOf(request.getAttribute("message"));
 %>
@@ -13,24 +14,12 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
 
 <title>VZ Feeder</title>
 
-<link rel="stylesheet" href="css/Core960.css"/>
-<link rel="stylesheet" href="css/CustomTheme.css"/>
-<link rel="stylesheet" href="css/Styles.css"/>
-<link rel="stylesheet" href="css/components.css"/>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/custom.css"/>
 
 <!--[if IE]>
     <link rel="stylesheet" href="css/ie.css"/>
-    <![endif]-->
-
-<!--Responsive Design Media Queries-->
-<!-- liquid -->
-<link href='css/handheld.css' media='only screen and (max-width: 960px)' rel='stylesheet'
-          type='text/css'>
-
-<!--Modernizr script for IE-->
-<script src="js/modernizr.js" type="text/javascript"></script>
-<script src="js/fun.js" type="text/javascript"></script>
-<script src="js/jquery.js" type="text/javascript"></script>
+<![endif]-->
 
 <script language=javaScript>
 
@@ -85,16 +74,12 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
                     document.body.scrollLeft = window.pageXOffset;
                 }
             }
-        }        
-        
-        function setFocusToEmpId() {
-        	document.Login.empid.focus();
         }
         
-        function clearForm()
+        function clearLogin()
         {
-        	document.getElementById("empid").value='';
-			document.getElementById("password").value='';
+        	document.getElementById("login").reset();
+        	document.getElementById("empid").focus();
         }
         
         function login()
@@ -108,7 +93,7 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
   <div class="content_container">
     <div class="container_12" style="position:relative">
    	  <section style="border-bottom: 10px solid #FF0000; padding:0px;">
-  		<img src="img/Logo.png"/>
+  		<img src="img/Logo.png" width="173px" height="71px"/>
   		<br>
       </section>
       </br>
@@ -128,7 +113,7 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
           </table>
           <b class="shadow_divider"><b><b></b></b></b>
           <article class="login_form userinfo_form">
-            <form name="login" method="post" action="loginServlet">
+            <form id="login" name="login" method="post" action="loginServlet">
                 <div class="sso_box">
                   <label>Windows User ID</label>
                   <input type='text' autofocus="autofocus" id="empid" name='empid' size='36' autocomplete='off' maxlength='10' class='sectionItem' title='Employee ID' tabindex=1 onKeyPress='return submitEnter(event)'>
@@ -137,12 +122,12 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
                 <br>
               	<div class="sso_box">
                 	<label>Password</label>
-                	<input 	type='password' id="password" autocomplete='off' name='password' size='36' maxlength='15' class='sectionItem' title='password' tabindex=2 onKeyPress='return submitEnter(event)'>
+                	<input type='password' id="password" autocomplete='off' name='password' size='36' maxlength='15' class='sectionItem' title='password' tabindex=2 onKeyPress='return submitEnter(event)'>
                 </div>
                 <br>
               <div class="button_box">
               	<input class="button" type="submit" value="Login">
-              	<input class="button" type="button" value="Clear" onClick="javascript:clearForm();">
+              	<input class="button" type="button" value="Clear" onClick="javascript:clearLogin();">
               </div>
             </form>
           </article>
@@ -152,7 +137,7 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
     </div>
     <section>
     	<br>
-    	<div align="center">All rights reserved. BGW Hackers.</div>
+    	<div align="center">A small POC for showcasing Continuous Integration. BGW Hackers (Prakash & Devjyoti).</div>
     </section>
     
   </div>
