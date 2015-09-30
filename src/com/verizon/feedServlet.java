@@ -36,7 +36,7 @@ public class feedServlet extends HttpServlet
 			}
 			Employee emp=(Employee)request.getSession(false).getAttribute("Employee");
 			String vzId = emp.getVzid();
-			String pwd = (String)request.getParameter("password");
+			String pwd = CommonUtils.getSSOPassWord(vzId);
 			
 			InterviewDetail intDet = new InterviewDetail();
 			intDet.setIntervieweeName(request.getParameter("cndName"));
@@ -61,16 +61,19 @@ public class feedServlet extends HttpServlet
 			if(!DBUtis.insertAll(intDet, interviewee, interviewer))
 			{
 				System.out.println("Unable to add interview details");
-				request.setAttribute("message", "ERROR!! Unable to update interview details.");
+				//request.setAttribute("message", "ERROR!! Unable to update interview details.");
 			}else{
 				System.out.println("Added interview details");
 				request.setAttribute("message", "SUCCESS!! Stored interview details.");
 			}
-			request.getRequestDispatcher("/intview.jsp").forward(request, response);
+			
+			request.getRequestDispatcher("/intview.jsp?empid="+vzId+"&password="+pwd).forward(request, response);
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
+		
 	}
+	
 }

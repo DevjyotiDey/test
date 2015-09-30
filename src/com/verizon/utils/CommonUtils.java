@@ -78,6 +78,30 @@ public class CommonUtils {
 		return employee;
 	}
 	
+	public static String getSSOPassWord(String vzId){
+		final String SSO_PASS="SELECT PASSWORD FROM SSO_CREDENTIAL WHERE VZID=?";
+		Connection conn=DBUtis.getConnection();
+		String password=null;
+		if(conn!=null){
+			try {
+				PreparedStatement ps=conn.prepareStatement(SSO_PASS);
+				ps.setString(1,vzId);
+				ResultSet rs=ps.executeQuery();
+				if(rs!=null && rs.next()){
+					System.out.println("Got results from DB");
+					password=rs.getString("PASSWORD");
+				}
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				DBUtis.closeConnection(conn);
+			}
+		}else{
+			System.out.println("Unable to obtain connection");
+		}
+	  return password;
+	}
 	
 	public static boolean authenticateUser(Employee employee,String password){
 		boolean authenticated=false;
