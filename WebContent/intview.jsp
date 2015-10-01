@@ -51,7 +51,10 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
 
 	$(document).ready(function()
 	{
-		$('#intvw').DataTable();
+		$('#intvw').dataTable({
+	        "aLengthMenu": [[5, 10, 15, -1], [5, 10, 15, "All"]],
+	        "iDisplayLength": 5
+    	});
 	} );
 
 </script>
