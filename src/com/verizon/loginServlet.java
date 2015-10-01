@@ -30,18 +30,23 @@ public class loginServlet extends HttpServlet
 			String vzId = (String)request.getParameter("empid");
 			String pwd = (String)request.getParameter("password");
 			HttpSession httpSession=null;
+			Employee employee=null;
 			// For local testing
 			//request.setAttribute("name", "Test");
 			//request.getRequestDispatcher("intview.jsp").forward(request, response);
-			
-			Employee employee = CommonUtils.getEmployee(vzId);
-			System.out.println("employee =" + employee.getVzid());
+			if(request.getSession(flase)==null){
+				employee = CommonUtils.getEmployee(vzId);
+				System.out.println("employee =" + employee.getVzid());
+			}else{
+				employee=(Employee) request.getSession(flase).getAttribute("Employee");
+				pwd = CommonUtils.getSSOPassword();
+			}
 			
 			boolean authenticated=CommonUtils.authenticateUser(employee,pwd);
 			if(authenticated)
 			{
 				httpSession=request.getSession();
-				httpSession.setMaxInactiveInterval(5*60);
+				//httpSession.setMaxInactiveInterval(5*60);
 				httpSession.setAttribute("Employee", employee);
 				httpSession.setAttribute("EmployeeName",employee.getEmployeeName());
 				request.setAttribute("name", employee.getEmployeeName());
