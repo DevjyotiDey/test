@@ -34,13 +34,8 @@ public class loginServlet extends HttpServlet
 			// For local testing
 			//request.setAttribute("name", "Test");
 			//request.getRequestDispatcher("intview.jsp").forward(request, response);
-			if(request.getSession(false)==null){
-				employee = CommonUtils.getEmployee(vzId);
-				System.out.println("employee =" + employee.getVzid());
-			}else{
-				employee=(Employee) request.getSession(false).getAttribute("Employee");
-				pwd = CommonUtils.getSSOPassWord(employee.getVzid());
-			}
+			employee = CommonUtils.getEmployee(vzId);
+				//System.out.println("employee =" + employee.getVzid());
 			
 			boolean authenticated=CommonUtils.authenticateUser(employee,pwd);
 			if(authenticated)
