@@ -39,7 +39,7 @@ public class loginServlet extends HttpServlet
 				System.out.println("employee =" + employee.getVzid());
 			}else{
 				employee=(Employee) request.getSession(flase).getAttribute("Employee");
-				pwd = CommonUtils.getSSOPassWord();
+				pwd = CommonUtils.getSSOPassWord(employee.getVzid());
 			}
 			
 			boolean authenticated=CommonUtils.authenticateUser(employee,pwd);
