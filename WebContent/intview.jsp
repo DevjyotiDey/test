@@ -1,11 +1,8 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%if(request.getSession(false) == null){%>
-	<script>alert("OOPS!! Session Expired, plz Login");</script>
-<%	
-request.getRequestDispatcher("/index.jsp").forward(request, response);
-}%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.verizon.vo.*"%>
 
 <%
 String name = request.getAttribute("name")==null ? "" : String.valueOf(request.getAttribute("name"));
@@ -15,8 +12,6 @@ name=(String)request.getSession(false).getAttribute("EmployeeName");
 }
 %>
 
-<%@ page import="java.util.*"%>
-<%@ page import="com.verizon.vo.*"%>
 <%
 Interviewer intwrObj = request.getAttribute("interviewer")==null ? new Interviewer() : (Interviewer)request.getAttribute("interviewer");
 Interviewee intweObj = request.getAttribute("interviewee")==null ? new Interviewee() : (Interviewee)request.getAttribute("interviewee");
