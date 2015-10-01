@@ -1,8 +1,11 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.*"%>
-<%@ page import="com.verizon.vo.*"%>
+<%if(request.getSession(false) == null){%>
+	<script>alert("OOPS!! Session Expired, plz Login");</script>
+<%	
+request.getRequestDispatcher("/index.jsp").forward(request, response);
+}%>
 
 <%
 String name = request.getAttribute("name")==null ? "" : String.valueOf(request.getAttribute("name"));
@@ -12,6 +15,8 @@ name=(String)request.getSession(false).getAttribute("EmployeeName");
 }
 %>
 
+<%@ page import="java.util.*"%>
+<%@ page import="com.verizon.vo.*"%>
 <%
 Interviewer intwrObj = request.getAttribute("interviewer")==null ? new Interviewer() : (Interviewer)request.getAttribute("interviewer");
 Interviewee intweObj = request.getAttribute("interviewee")==null ? new Interviewee() : (Interviewee)request.getAttribute("interviewee");
@@ -147,7 +152,7 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
             	<td><%= interviewerList.get(i).getFeedback() %></td>
             	<td><%= interviewerList.get(i).getResult() %></td>
 				<td>
-					<a href="javascript:window.open('evalDet.jsp?result=(<%= interviewerList.get(i).getEvaluationResults() %>', '_blank', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=510, width=980');"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
+					<a href="/evalDet.jsp?result=<%= interviewerList.get(i).getEvaluationResults() %>"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
 					<a href="javascript:download(<%= interviewerList.get(i).getAddlDocument() %>);"><img src="img/attach.png" height="25px" width="25px" title="Download Attachments"/></a>
 				</td>
             </tr>
@@ -162,7 +167,7 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
             	<td><%= intervieweeList.get(i).getFeedback() %></td>
             	<td><%= intervieweeList.get(i).getResult() %></td>
 				<td>
-					<a href="javascript:window.open('evalDet.jsp?result=(<%= intervieweeList.get(i).getEvaluationResults() %>', '_blank', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, height=510, width=980');"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
+					<a href="/evalDet.jsp?result=<%= intervieweeList.get(i).getEvaluationResults() %>"><img src="img/details.png" height="15px" width="15px" title="Evaluation Details"/></a>
 					<a href="javascript:download(<%= intervieweeList.get(i).getAddlDocument() %>);"><img src="img/attach.png" height="25px" width="25px" title="Download Attachments"/></a>
 				</td>
             </tr>
@@ -344,7 +349,7 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
 	function cancel()
     {
     	document.getElementById("feed").style.display = "none";
-	document.getElementById("list").style.display = "inline";
+		document.getElementById("list").style.display = "inline";
     }
     
 </script>
@@ -354,10 +359,10 @@ intervieweeList.addAll(intweObj.getInterviewsGiven());
 	function addFeedback()
 	{
 	  	document.getElementById("feedback").reset();
-       		document.getElementById("cndName").focus();
-       		document.getElementById("feed").style.display = "block";
+       	document.getElementById("cndName").focus();
+       	document.getElementById("feed").style.display = "block";
 		document.getElementById("list").style.display = "none";
-    	}
+    }
     
 </script>
 
