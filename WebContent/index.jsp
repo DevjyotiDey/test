@@ -12,7 +12,7 @@ String message = request.getAttribute("message")==null ? "" : String.valueOf(req
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name='viewport' content='width=device-width, initial-scale=1, user-scalable=no'/>
 
-<title>VZ Feeder</title>
+<title>VZ Feeder Proj</title>
 
 <link rel="stylesheet" href="css/core.css"/>
 <link rel="stylesheet" href="css/custom.css"/>
